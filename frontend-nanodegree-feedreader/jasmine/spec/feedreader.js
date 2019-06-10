@@ -31,7 +31,7 @@ $(function() {
           allFeeds.forEach(function (feed) {
             expect(feed.url).toBeDefined();
             expect(feed.url).not.toEqual('');
-          })
+          });
         });
 
         /*a test that loops through each feed
@@ -43,7 +43,7 @@ $(function() {
            allFeeds.forEach(function(feed) {
              expect(feed.name).toBeDefined();
              expect(feed.name).not.toEqual('');
-           })
+           });
          });
        });
 
@@ -82,10 +82,8 @@ $(function() {
             expect($('body').hasClass('menu-hidden')).not.toBeTruthy();
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBeTruthy()
-
         });
-
-
+      });
 
 
     describe('Initial Entries', function() {
@@ -128,7 +126,6 @@ $(function() {
      expect(firstFeed).not.toBe(secondFeed);
       done();
     });
-
   });
 
 }())
