@@ -71,25 +71,18 @@ $(function() {
           * visibility when the menu icon is clicked.
           */
 
-          it('menu changes visibility when clicked', function(done) {
+          it('menu changes visibility when clicked', function() {
             /*
             checking to see that the menu visibility changes as expected upon
             clicks
             */
 
-            /* firs time it's clicked - it appears*/
 
-            expect($('.menu-icon-link').click(function() {
-                  expect($('body').hasClass('menu-hidden')).not.toBeTruthy()})).toBeTruthy();
-                  done();
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).not.toBeTruthy();
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBeTruthy()
 
-
-            /* when clicked again, it becomes hidden*/
-            expect($('.menu-icon-link').click(function() {
-                  expect($('body').hasClass('menu-hidden')).toBeTruthy()})).toBeTruthy();
-                 done();
-
-          });
         });
 
 
@@ -108,34 +101,31 @@ $(function() {
          loadFeed(0, done);
        });
 
-       it('loadFeed includes entries', function(done) {
-         expect($('.feed .entry')).not.toBe('');
-         done();
+       it('loadFeed includes entries', function() {
+         expect($('.feed .entry').length).not.toBe(0);
        });
 
      });
 
 
      describe('New Feed Selection', function() {
+       var firstFeed, secondFeed;
 
        /* a test that ensures when a new feed is loaded
         * by the loadFeed function that the content actually changes.
         */
         beforeEach((done) => {
           loadFeed(0, function() {
-            var firstFeed =$('.feed').html();
-            done();
+            firstFeed = $('.feed').html();
             loadFeed(1, function() {
-              var secondFeed = $('.feed').html();
+               secondFeed = $('.feed').html();
               done();
             });
           });
     });
 
     it('new feed worked and content is changed', function(done) {
-      var firstEntry = allFeeds[0].url;
-      var secondEntry = allFeeds[1].url;
-      expect(firstEntry).not.toBe(secondEntry);
+     expect(firstFeed).not.toBe(secondFeed);
       done();
     });
 
